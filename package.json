@@ -1,0 +1,26 @@
+{
+  "name": "stats-influxdb",
+  "version": "1.0.0",
+  "description": "statistics lib using influxdbudp module",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha ./test"
+  },
+  "author": "Keyang Xiang <keyang.xiang@gmail.com>",
+  "contributors": [
+    {
+      "name": "Keyang Xiang",
+      "email": "keyang.xiang@gmail.com"
+    }
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "diskusage": "^0.1.5",
+    "influxdbudp": "^1.0.0"
+  },
+  "devDependencies": {
+    "mocha": "^2.4.5",
+    "proxyquire": "^1.7.4",
+    "sinon": "^1.17.3"
+  }
+}
