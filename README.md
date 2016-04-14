@@ -16,9 +16,10 @@ var session=require("stats-influxdb").newSession({
     }
 });
 
-session.cpu();  //collect current cpu usage and send to influxdb as 'cpu,unit=unit1,project=myProject core1=40,core2=24,core3=1,core4=80'
+session.cpu();  //collect current cpu usage (during next 100ms) and send to influxdb as 'cpu,unit=unit1,project=myProject core1=40,core2=24,core3=1,core4=80'
 session.mem();  //collect current mem usage 'mem,unit=unit1,project=myProject used=2000,used_ratio=70'
-session.disk(); //collect current disk usage 'disk,unit=unit1,project=myProject used=123456,used_ration=20'
+session.disk("/"); //collect current disk usage 'disk,unit=unit1,project=myProject used=123456,used_ration=20'
+session.pidusage(); //collect current pid usage 'process,pid=<pid> mem=<mem in byte>,cpu=<cpu percent>'
 session.count("myLabel"); //add a value to a label 'count,label=myLabel,unit=unit1,project=myProject value=1'
 session.count("login_endpoint",1,["user=userName"]);  //calculate the amount of login attempts for a user.  'count,label=login_endpoint,user="userName",unit=unit1,project=myProject value=1'
 session.time("ftp_upload"); //same as console.time(), start to count time elapsed for a label.

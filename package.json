@@ -1,6 +1,6 @@
 {
   "name": "stats-influxdb",
-  "version": "1.0.1",
+  "version": "1.0.5",
   "description": "statistics lib using influxdbudp module",
   "main": "index.js",
   "scripts": {
@@ -16,7 +16,8 @@
   "license": "MIT",
   "dependencies": {
     "diskusage": "^0.1.5",
-    "influxdbudp": "^1.0.0"
+    "influxdbudp": "^1.0.1",
+    "pidusage": "^1.0.1"
   },
   "devDependencies": {
     "mocha": "^2.4.5",
