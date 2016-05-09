@@ -1,6 +1,6 @@
 {
   "name": "stats-influxdb",
-  "version": "1.0.7",
+  "version": "2.0.0",
   "description": "statistics lib using influxdbudp module",
   "main": "index.js",
   "scripts": {
@@ -11,6 +11,9 @@
     {
       "name": "Keyang Xiang",
       "email": "keyang.xiang@gmail.com"
+    },{
+      "name": "Alan Moran",
+      "email": "alan@alanmoran.me"
     }
   ],
   "license": "MIT",
