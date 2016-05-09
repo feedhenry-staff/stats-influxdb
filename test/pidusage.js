@@ -1,3 +1,4 @@
+"use strict";
 var proxyquire = require("proxyquire");
 var sinon = require("sinon");
 var session = {
@@ -16,16 +17,16 @@ describe("pid probe", function() {
           cb(null, {
             cpu: 20,
             memory: 50000
-          })
+          });
         }
       }
-    }
-    var pid = proxyquire("../lib/api/pidusage", proxy).bind(session);
+    };
+    var pid = proxyquire("../lib/api/pidusage", proxy)(session);
     var procId=process.pid;
-    pid(function(err) {
+    pid(function() {
       sinon.assert.calledOnce(proxy["../send"]);
       sinon.assert.calledWith(proxy["../send"], session, "process,pid="+procId, "mem=50000,cpu=20");
       done();
     });
   });
-})
+});

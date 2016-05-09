@@ -1,3 +1,4 @@
+"use strict";
 var proxyquire=require("proxyquire");
 var sinon=require("sinon");
 var session={
@@ -12,8 +13,8 @@ describe("disk probe",function(){
   it ("should retrieve current disk informatino",function(done){
     var proxy={
       "../send":sinon.spy()
-    }
-    var disk=proxyquire("../lib/api/disk",proxy).bind(session);
+    };
+    var disk=proxyquire("../lib/api/disk",proxy)(session);
     disk("/",function(err){
       assert(!err);
       sinon.assert.calledOnce(proxy["../send"]);
@@ -21,4 +22,4 @@ describe("disk probe",function(){
       done();
     });
   });
-})
+});

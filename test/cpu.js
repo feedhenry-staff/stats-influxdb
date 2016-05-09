@@ -1,10 +1,6 @@
+"use strict";
 var proxyquire = require("proxyquire");
 var sinon = require("sinon");
-var proxy = {
-  influxdbudp: function(params) {
-    console.log(params);
-  }
-}
 var session = {
   params: {
     host: "myhost",
@@ -26,18 +22,18 @@ describe("cpu probe", function() {
         idle: 1200,
         user: 1200
       }
-    }])
+    }]);
     var proxy = {
       "../send": sinon.spy(),
       "os": {
         cpus: cpuStub
       }
-    }
-    var cpu = proxyquire("../lib/api/cpu", proxy).bind(session);
+    };
+    var cpu = proxyquire("../lib/api/cpu", proxy)(session);
     cpu(function() {
       sinon.assert.calledOnce(proxy["../send"]);
       sinon.assert.calledWith(proxy["../send"], session, "cpu","core1=50");
       done();
     });
   });
-})
+});

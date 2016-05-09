@@ -1,3 +1,4 @@
+"use strict";
 var proxyquire = require("proxyquire");
 var sinon = require("sinon");
 var session = {
@@ -11,7 +12,7 @@ describe("send module", function() {
   it("should send tags and values", function() {
     var proxy = {
       influxdbudp: sinon.spy()
-    }
+    };
     var send = proxyquire("../lib/send", proxy);
     send(session, "cpu", "core1=25,core2=40");
     sinon.assert.calledOnce(proxy.influxdbudp);
@@ -22,5 +23,5 @@ describe("send module", function() {
       timestamp: undefined,
       values: "core1=25,core2=40"
     });
-  })
-})
+  });
+});

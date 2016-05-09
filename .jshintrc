@@ -31,7 +31,7 @@
   "boss": true,
   "node": true,
   "newcap": true,
-  "quotmark": "single",
+  "quotmark": "double",
   "unused": true,
   "strict": true,
   "maxparams": 6,
