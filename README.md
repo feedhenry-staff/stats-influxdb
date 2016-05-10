@@ -23,6 +23,7 @@ session.pidusage(); //collect current pid usage 'process,pid=<pid> mem=<mem in b
 session.count("myLabel"); //add a value to a label 'count,label=myLabel,unit=unit1,project=myProject value=1'
 session.count("login_endpoint",1,["user=userName"]);  //calculate the amount of login attempts for a user.  'count,label=login_endpoint,user="userName",unit=unit1,project=myProject value=1'
 var time = session.time("ftp_upload"); //same as console.time(), start to count time elapsed for a label.
+var time = session.time("ftp_upload",["name=ftp1"]); //Allows for additional tags also.`timeElapsed,label=ftp_upload,name=ftp1`
 session.timeEnd(time); //Like console.timeEnd() but you must pass the object returned by .time(), end counting the time elpased. 'timeElapsed,label=ftp_upload,unit=unit1,project=myProject value=<timeElapsed>'
 session.custom("process",["name=nodeProc1"],["mem=400,cpu=43"]); //customised measurement. 'process,name=nodeProc1,,unit=unit1,project=myProject mem=400,cpu=43'
 ```
