@@ -32,7 +32,7 @@ describe("cpu probe", function() {
     var cpu = proxyquire("../lib/api/cpu", proxy)(session);
     cpu(function() {
       sinon.assert.calledOnce(proxy["../send"]);
-      sinon.assert.calledWith(proxy["../send"], session, "cpu","core1=50");
+      sinon.assert.calledWith(proxy["../send"], session, "cpu","name=core1,core=50");
       done();
     });
   });
