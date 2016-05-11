@@ -16,7 +16,7 @@ var session=require("stats-influxdb").newSession({
     }
 });
 
-session.cpu();  //collect current cpu usage (during next 100ms) and send to influxdb as 'cpu,unit=unit1,project=myProject core1=40,core2=24,core3=1,core4=80'
+session.cpu();  //collect current cpu usage (during next 500ms) and send to influxdb as 'cpu,unit=unit1,project=myProject,name=core1,core=40'. Each core is sent separately so data can be aggregated easily.
 session.mem();  //collect current mem usage 'mem,unit=unit1,project=myProject used=2000,used_ratio=70'
 session.disk("/"); //collect current disk usage 'disk,unit=unit1,project=myProject used=123456,used_ration=20'
 session.pidusage(); //collect current pid usage 'process,pid=<pid> mem=<mem in byte>,cpu=<cpu percent>'
