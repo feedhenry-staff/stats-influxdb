@@ -30,7 +30,7 @@ describe("time probe", function () {
     var time = proxyquire("../lib/api/time", proxy);
 
     // First Timer - (i = 0)
-    var start1 = time.time()("hello");
+    var start1 = time.time()("hello", sinon.spy());
     proxy["../send"].returned({
       label: "hello",
       i: 0
@@ -64,19 +64,17 @@ describe("time probe", function () {
       done();
     }, 600);
   });
-
-  it("should allow additional tags", function (done) {
-      var proxy = {
-        "../send": sinon.spy()
-      };
-      var time = proxyquire("../lib/api/time", proxy);
-      var start = time.time()("hello", ["user=test", "tag1=test2"]);
-      setTimeout(function () {
-        time.timeEnd(session)(start);
-        sinon.assert.calledOnce(proxy["../send"]);
-        sinon.assert.calledWith(proxy["../send"], session, "timeElapsed,label=hello,user=test,tag1=test2");
-        done();
-      }, 300);
-    });
-
+  it("should handle concurrent request", function () {
+    var proxy = {
+      "../send": sinon.spy()
+    };
+    var time = proxyquire("../lib/api/time", proxy);
+    var timers = [];
+    for (var i = 0; i < 2; i++) {
+      timers.push(time.time()("hello"));
+    }
+    time.timeEnd(session)(timers[0]);
+    time.timeEnd(session)(timers[1]);
+    sinon.assert.calledTwice(proxy["../send"]);
+  });
 });
