@@ -1,6 +1,6 @@
 {
   "name": "stats-influxdb",
-  "version": "3.0.0",
+  "version": "2.2.0-alpha",
   "description": "statistics lib using influxdbudp module",
   "main": "index.js",
   "scripts": {
