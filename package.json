@@ -18,7 +18,7 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "diskusage": "^0.1.5",
+    "diskspace": "^1.0.3",
     "influxdbudp": "^1.0.2",
     "pidusage": "^1.0.1"
   },
